@@ -2,6 +2,9 @@
 ## Overview
 BEHAV3D_Tumor_Profiler is dynamic immuno-organoid 3D imaging platform derived from BEHAV3D to study tumor cells interactions with the Tumor Micro Environment (TME). It runs in a user friendly Google Colab notebook. However, the original R scripts are also available.
 
+## Google Colab
+The pipeline is implemented in a user friendly Google Colab Notebook that you can find [here](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
+
 ## What type of data does BEHAV3D_Tumor_Profiler work with?
 - Any type of multispectral time-lapse 3D (or 2D) imaging data, where objects such as tumor cells or tumor organoids are in co-culture with immune cells of interest (MG, SR101) and Blood Vessel information (BV).\
  **Data can be located in local or in Google Drive**
@@ -17,7 +20,7 @@ BEHAV3D_Tumor_Profiler is dynamic immuno-organoid 3D imaging platform derived fr
 Dekkers JF*, Alieva M*, Cleven A, Keramati F, Wezenaar AKL, van Vliet EJ, Puschhof J, Brazda P, Johanna I, Meringa AD, Rebel HG, Buchholz MB, Barrera Román M, Zeeman AL, de Blank S, Fasci D, Geurts MH, Cornel AM, Driehuis E, Millen R, Straetemans T, Nicolasen MJT, Aarts-Riemens T, Ariese HCR, Johnson HR, van Ineveld RL, Karaiskaki F, Kopper O, Bar-Ephraim YE, Kretzschmar K, Eggermont AMM, Nierkens S, Wehrens EJ, Stunnenberg HG, Clevers H, Kuball J, Sebestyen Z, Rios AC. **Uncovering the mode of action of engineered T cells in patient cancer organoids**. * *equal contibution* Nat Biotechnol. 2023 Jan https://doi.org/10.1038/s41587-022-01397-w
 
 ## Software and Hardware requirements
-BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](), so no specific hardware is required to run the pipeline. If you desire to run the R scripts, you can run them R studio or from command line. The pipeline was tested Windows 10 with R version 4.3.3.
+BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), so no specific hardware is required to run the pipeline. If you desire to run the R scripts, you can run them R studio or from command line. The pipeline was tested Windows 10 with R version 4.3.3.
 
 The main hardware requirements are for Imaris image processing before using the pipeline, which could require decent hardware. The BEHAV3D_Tumor Profiler analysis pipeline can be run on any decent computer
 
@@ -32,7 +35,7 @@ For image analysis we made use of a workstation with the following specs:
 
 
 ## Installation
-To use the [Google Colab], there is no need for installation. You just need to run the `Environment setup` section twice (runtime ~20 min), import your dataset (local or Google Drive) and you are ready to go!
+To use the [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), there is no need for installation. You just need to run the `Environment setup` section twice (runtime ~20 min), import your dataset (local or Google Drive) and you are ready to go!
 
 If you desire to use the Rstudio script, you can download the repository to your PC via direct dowload or git clone https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler.git in Git Bash.\
 To that purpose, the BEHAV3D Tumor Profiler uses the following R libraries (version used with R 4.3.3) :
@@ -73,10 +76,10 @@ However any type of time-lapse data can be processed with the pipeline, includin
 In this repository we provide example datasets consisting of a multispectral time-lapse 3D imaging dataset originated from a co-culture of engeneered T cells and Tumor derived organoids from the BEHAV3D [original paper](https://www.nature.com/articles/s41587-022-01397-w). Multispectral imaging allows to identify: Live/dead T cells; Live/Dead organoids. For downstream analysis of organoids: Either individual tumor derived organoids are tracked overtime or the total organoid volume per well is tracked. For each generated object we acquire information on the dead cell dye intensity and position and volume of individual organoids. For downstream analysis of T cell: T cells are tracked overtime. For each Tracked T cell object we aquire, position per timepoint, speed, square displacement, distance to an organoid, dead dye intensity, major and minor axis length (used in some downstream analysis).
 
 ## Repository
-This repository contains a redirection to the [Google Colab user friendly platform](), as well as the original R script, in case you want to further modify the pipeline to your needs.
+This repository contains a redirection to the [Google Colab user friendly platform](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), as well as the original R script, in case you want to further modify the pipeline to your needs.
 
 ## Set-up
-This pipeline is ready to use. In [Google Colab]() you only need to upload your files or link your google drive to the notebook and play with the available parameters that can modify your analysis. In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/IVM_analysis_20240208_nosubsequences.R), you need to manually modify these parameters and specify the input and output directories 
+This pipeline is ready to use. In [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing) you only need to upload your files or link your google drive to the notebook and play with the available parameters that can modify your analysis. In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/IVM_analysis_20240208_nosubsequences.R), you need to manually modify these parameters and specify the input and output directories 
 
 ## Demo
 
@@ -154,6 +157,10 @@ output csv and txt:
 - You can **make a copy** of the notebook and save it to your Google Drive account (File -> Save a copy in Drive).
 - To adit a cell, double click on the text. This will show either the source code (in code cells) or the source text (in text cells).
 - You can use the `#`-mark in code cells to comment out parts of the code, so you can keep the original code or perform the tests you desire.
+
+### Jupyter notebook
+- Additionally, you are able to download the BEHAV3D_Tumor_Profiler Google Colab notebook into a `.ipynb` format and run it locally in a jupyter notebook environment (File>Download>Download .ipynb).
+- Note, however, that doing this may result in having to change the sections of code referred to datafiles import and export, so it is advised to change this sections to your convenience in this case. 
 
 ## ***To run from Rstudio***
 
