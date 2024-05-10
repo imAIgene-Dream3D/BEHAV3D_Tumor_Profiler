@@ -115,7 +115,7 @@ This repository contains a redirection to the [Google Colab user friendly platfo
 ## Set-up
 This pipeline is ready to use. In [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing) you only need to upload your files or link your google drive to the notebook, specify the working directories for each cell type and play with the available parameters that can modify your analysis. 
 
-In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/IVM_analysis_20240208_nosubsequences.R), you need to manually modify these parameters and specify the input and output directories. You may also need to install all the required libraries specified above.
+In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/BEHAV3D_Tumor_Profiler.R), you need to manually modify these parameters and specify the input and output directories. You may also need to install all the required libraries specified above.
 
 ## Demo
 
