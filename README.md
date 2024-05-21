@@ -57,6 +57,7 @@ To that purpose, the BEHAV3D Tumor Profiler uses the following R libraries (vers
 | dplyr  | 1.1.4  |
 | dtwclust  | 5.5.12  |
 | e1071 | 1.7.14 |
+| emmeans | 1.10.1 |
 | ggplot2  | 3.5.0  |
 | gtools  | 3.9.5  |
 | parallel  | 4.3.3  |
