@@ -1601,7 +1601,7 @@ df1 <- df1 %>%
 continuous_palette <- colorRampPalette(c("cyan4", "darkturquoise","darkorchid4","darkorchid1", "deeppink4","deeppink1", "goldenrod3", "gold"))(50)
 
 # Select 8 colors from the continuous palette
-mypalette_1<- continuous_palette[seq(1, length(continuous_palette), length.out = n_clusters)]
+mypalette_1<- continuous_palette[seq(1, length(continuous_palette), length.out = n_cluster)]
 
 
 ### plot enrichment on edge and core:
@@ -1715,7 +1715,7 @@ capture.output(TukeyHSD(a_class_speed), file=paste0(res_path,"/Tukey_speed_cytom
 
 
 
-#### try an anova between clusters based on distance to speed
+#### try an anova between clusters based on distance to squared displacement
 p_class_disp2 <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=disp2, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("speed per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,180))
@@ -1859,6 +1859,16 @@ TukeyHSD(a_class_BV_mean)
 ### save as txt the output of this comparison. Change the path for your own data
 capture.output(TukeyHSD(a_class_BV_mean), file=paste0(res_path,"/Tukey_meanBV_cytomap_cl.txt"))
 
+##relation between position relative to the tumor and amount of MG:
+
+pcor_MG_position <- ggplot(subset(master_class_sum2, !is.na(min_MG)),aes(x=distance_to_tumor , y=n_MG)) +geom_jitter()+
+  geom_point(alpha=0.5,stat = "summary") +geom_smooth(method = "lm")+ggtitle("scatter plot movement vs min_MG")+theme_classic()+
+  theme(aspect.ratio=1)
+
+pcor_MG_position
+
+cor_18<-cor.test(master_class_sum2$n_MG,master_class_sum2$distance_to_tumor,  method = "pearson", use = "pairwise.complete.obs")
+cor_18
 
 
 
@@ -2027,9 +2037,6 @@ pheatmap(df_other_features, clustering_method = "complete", cluster_cols=F,clust
 dev.off()
 
 
-print(Cluster_movement)  #3 per cluster we can see the direction
-
-
 ## plot clusters giving them a color according to direction
 library(scales)
 # Convert df to a data frame
@@ -2145,22 +2152,6 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 # Differences per behavioral cluster in small-scale TME features
-
-#### try an anova between clusters based direction
-p_direction <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=movement, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
-  geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("speed per cluster")+theme_classic()+
-  theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(-15,20))
-
-p_direction
-
-a_direction <- aov(movement ~ cluster2, data=master_class_sum2) 
-summary(a_direction)
-TukeyHSD(a_direction)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_direction), file=paste0(res_path,"Tukey_direction.txt"))
-capture.output(summary(a_direction), file=paste0(res_path,"aov_direction.txt"))
-
-
 
 #### try an anova between clusters based on distance to dist_3_neigh
 p_dist3_neigth <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_3_neigh, group=cluster2, fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
@@ -2491,9 +2482,6 @@ capture.output(cor_18, file=paste0(res_path,"/correlation_nMG_to_location_at_tum
 
 
 pdf(paste0(res_path, "environmental_cluster_stats.pdf"))
-p_class_speed
-p_class_disp2
-p_class_movement
 p_class_dist_10neigh
 p_class_minMG
 p_classmin_SR101
