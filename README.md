@@ -105,11 +105,6 @@ These are the features to be uploaded:
 - `Speed`
 - `Time`
 
-
-
-## Dataset example (TODO)
-In this repository we provide example datasets consisting of a multispectral time-lapse 3D imaging dataset originated from a co-culture of engeneered T cells and Tumor derived organoids from the BEHAV3D Tumor Profiler [original paper](TOFILL). Multispectral imaging allows to identify: Live/dead T cells; Live/Dead organoids. For downstream analysis of organoids: Either individual tumor derived organoids are tracked overtime or the total organoid volume per well is tracked. For each generated object we acquire information on the dead cell dye intensity and position and volume of individual organoids. For downstream analysis of T cell: T cells are tracked overtime. For each Tracked T cell object we aquire, position per timepoint, speed, square displacement, distance to an organoid, dead dye intensity, major and minor axis length (used in some downstream analysis).
-
 ## Repository
 This repository contains a redirection to the [Google Colab user friendly platform](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), as well as the original R script, in case you want to further modify the pipeline to your needs. Additionally, a [wiki demo]() is provided as a follow-through tutorial of the pipeline and outputs.
 
@@ -120,7 +115,7 @@ In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHA
 
 ## Demo
 
-The [Demo]() is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset.
+The [Demo]() is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
 
 
 ## Making changes to your notebook
