@@ -9,18 +9,21 @@ The BEHAV3D Tumor Profiler is divided in three distinct modules:
 **1) Heterogeneity Module**
 -  Implements multiparametric single-cell time-series classification, allowing us to identify distinct single-cell behavioral patterns
 
+Optional Modules:
+ 
 **2) Large-scale phenotyping module**
 - Performs large-scale TME phenotyping and identifies regions with a specific cellular composition and architecture within the TME of intravitally imaged tumors
 
 **3) Small-scale phenotyping module**
 - Further refines TME phenotyping to better understand tumor cell behavior
 
-Each of the three modules can be run independently from one another
+Module 1 is mandatory for modules 2 and 3 to be able to work, therefore the execution of the optional modules 2 and 3 is combined with module 1, to simplify user experience.
+
 ## Google Colab
 The pipeline is implemented in a user friendly Google Colab Notebook that you can find [here](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
 
 ## What type of data does BEHAV3D Tumor Profiler work with?
-- Any type of multispectral time-lapse 3D (or 2D) imaging data, where objects such as tumor cells or tumor organoids are in co-culture with immune cells of interest (MG, SR101) and Blood Vessel information (BV).\
+- Any type of multispectral time-lapse 3D (or 2D) imaging data, where objects such as tumor cells or tumor organoids are in co-culture with immune cells of interest (MG, SR101) and Blood Vessel information (BV). Data for this pipeline has been extracted from [Imaris software](https://imaris.oxinst.com/), but more imaging software can also be used and will be tested in the future.\
  **Data can be located in local or in Google Drive**
 
 ## What output can BEHAV3D Tumor Profiler provide?
@@ -37,7 +40,7 @@ BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](https://colab.research.
 
 The main hardware requirements are for Imaris image processing before using the pipeline, which could require decent hardware. The BEHAV3D_Tumor Profiler analysis pipeline can be run on any decent computer
 
-For image analysis we made use of a workstation with the following specs:
+For image analysis, the Imaris analysis software v. 9.6 was emlployed and we made use of a workstation with the following specs:
 | | |
 | ------------- | ------------- |
 | GPU |		NVIDIA Quadro P4000 |
