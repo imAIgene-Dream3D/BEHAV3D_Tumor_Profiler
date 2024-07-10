@@ -60,7 +60,7 @@ For image analysis, the Imaris analysis software v. 9.6 was emlployed and we mad
 ## Installation
 To use the [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), there is no need for installation. You just need to run the `Environment setup` section twice (runtime ~20 min), import your dataset (local or Google Drive) and you are ready to go! You will need to specify the directories of each cell trype information (See Google Colab notebook)
 
-If you desire to use the Rstudio script, you can download the repository to your PC via direct dowload or git clone https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler.git in Git Bash.\
+If you desire to use the Rstudio script, you can download the repository to your PC via direct dowload or git clone https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler.git in Git Bash.\
 To that purpose, the BEHAV3D Tumor Profiler uses the following R libraries (version used with R 4.3.3) :
 | Package  | Version |
 | ------------- | ------------- |
