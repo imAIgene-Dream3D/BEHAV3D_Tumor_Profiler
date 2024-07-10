@@ -1,5 +1,7 @@
 # BEHAV3D Tumor Profiler pipeline
 Welcome to the BEHAV3D Tumor Profiler pipeline. Here you can analyze 3D confocal microscopy images and dissect the behavioral patterns of tumor cells.
+![BEHAV3D Tumor Profiler](images/BEHAV3D_TP_logo_nobg.png)
+
 ## Overview
 BEHAV3D_Tumor_Profiler is dynamic immuno-organoid 3D imaging platform derived from BEHAV3D to study tumor cells interactions with the Tumor Micro Environment (TME). It runs in a user friendly Google Colab notebook. However, the original R scripts are also available.
 
@@ -19,7 +21,10 @@ Optional Modules:
 
 Module 1 is mandatory for modules 2 and 3 to be able to work, therefore the execution of the optional modules 2 and 3 is combined with module 1, to simplify user experience.
 
+<img src="images/colab.png" alt="Google Colab" align="right" width="175"/>
+
 ## Google Colab
+
 The pipeline is implemented in a user friendly Google Colab Notebook that you can find [here](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
 
 ## What type of data does BEHAV3D Tumor Profiler work with?
