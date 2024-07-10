@@ -25,7 +25,9 @@ Module 1 is mandatory for modules 2 and 3 to be able to work, therefore the exec
 
 ## Google Colab
 
-The pipeline is implemented in a user friendly Google Colab Notebook that you can find [here](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
+The pipeline is implemented in a user friendly Google Colab Notebook that you can find here:
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
 
 ## What type of data does BEHAV3D Tumor Profiler work with?
 - Any type of multispectral time-lapse 3D (or 2D) imaging data, where objects such as tumor cells or tumor organoids are in co-culture with immune cells of interest (MG, SR101) and Blood Vessel information (BV). Data for this pipeline has been extracted from [Imaris software](https://imaris.oxinst.com/), but more imaging software can also be used and will be tested in the future.\
