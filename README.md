@@ -96,9 +96,9 @@ Input data can be obtained from image analysis software like Imaris, where you e
  Input data must follow the following format:
 `Mouse_CellType_timelapse_LargeScaleRegion_Feature.csv`
 
-|Expected Cell types ||||
-| ------------- | ------------- | ------------- | ------------- |
-| Tumor Cells | SR101 | MG (Microglia) | BV (Blood Vessel)  
+|Expected Cell types ||
+| ------------- | ------------- 
+| Tumor Cells | 3 Labelled TME (e.g. SR101, MG (Microglia) and BV (Blood Vessel))  
 
 **Example**: `2430F13_SR101_timelapse_CL3_2_Distance.csv`
 
