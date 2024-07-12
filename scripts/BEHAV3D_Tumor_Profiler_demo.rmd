@@ -9,8 +9,8 @@ output:
     toc_float: true
     css: styles.css
 date: 'Compiled: `r format(Sys.Date(), "%B %d, %Y")`'
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -39,6 +39,9 @@ source("render_toc.R")
 library(DT) # To show scrollable dataframes
 ```
 
+
+<img src="D:/BEHAV3D_Tumor_Profiler/img/BEHAV3D_TP_logo_nobg.png" align="right" width="400"/>
+
 ## Table of contents
 
 ```{r toc, echo=FALSE}
@@ -56,6 +59,10 @@ page](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler), where you
 can find a wider explanation of the pipeline, as well as the [Google
 Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?authuser=3&hl=en#scrollTo=Q3roX4QRD5yc)
 and R script versions.
+
+
+[![Open Colab notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?authuser=3&hl=en#scrollTo=Q3roX4QRD5yc)
+
 
 Firstly all the necessary libraries must be installed
 
@@ -106,7 +113,7 @@ type must be inputted separately into the pipeline.
 Input data must follow the following format:
 `Mouse_CellType_timelapse_LargeScaleRegion_Feature.csv`
 
-| Expected Cell types |       |                |                   |
+| Our analyzed Cell types |       |                |                   |
 |---------------------|-------|----------------|-------------------|
 | Tumor Cells         | SR101 | MG (Microglia) | BV (Blood Vessel) |
 
@@ -855,32 +862,32 @@ Then, metadata information is added to the analysis:
 
 Set working directory to export dataframes
 \
-```{r}
+```{r eval=FALSE}
 setwd("D:/BEHAV3D_Tumor_Profiler/results/rds")
 ```
 \
 All imported information:
 \
 
-```{r}
+```{r eval=FALSE}
 saveRDS(master_distance, "master_distance.rds")
 ```
 \
 Time of interest subset information:
 \
-```{r}
+```{r eval=FALSE}
 saveRDS(master_cor,"master_cor.rds")
 ```
 \
 Microglia information:
 \
-```{r}
+```{r eval=FALSE}
 saveRDS(master_distance_MG,"master_distance_MG.rds")
 ```
 \
 SR101 information:
 \
-```{r}
+```{r eval=FALSE}
 saveRDS(master_distance_SR101,"master_distance_SR101.rds")
 
 ```
@@ -890,7 +897,6 @@ Blood Vessel information:
 ```{r eval=FALSE}
 saveRDS(BV_df_sum,"BV_df_sum.rds")
 ```
-
 \
 
 ### 2. You can continue with a previously started analysis using the `.rds` files obtained.
@@ -1022,22 +1028,9 @@ master_scaled<-master_norm[c(column_names2)]%>%mutate(across(everything(), scale
 master_pca<-prcomp(master_norm[c(column_names2)], scale = T)
 
 master_pca2<-master_pca[["x"]] ##select only PC
-##Semi-supervised learning, we introduce as well the distance to tumor variable that defines the direction of the cells, since it is the most important for us
-## Make an option of running completely unsupervised (only include the pca) and semi-supervised learning here
 master_pca3<-data.frame(master_norm[,c(2)],master_pca2[,c(1:3)]) ### take only first 3 components since they explain most variation
-```
-\
-Choose between an unsupervised or a semi-supervised approach. The semi-supervised approach introduces the distance to tumor variable in the analysis
-\
-```{r}
-Analysis <- "Semi-supervised" # @param ["Semi-supervised", "Unsupervised"]
 
-if (Analysis == "Semi-supervised"){
-  colnames(master_pca3)[1]<- "Track2"
-  print("Semi-supervised Analysis")
-} else{
-  print("Unsupervised Analysis")
-}
+colnames(master_pca3)[1]<- "Track2"
 ```
 
 \
@@ -1070,11 +1063,15 @@ The BEHAV3D Tumor Profiler is divided in three distinct modules:
 **1. Heterogeneity Module**
 -  Implements multiparametric single-cell time-series classification, allowing us to identify distinct single-cell behavioral patterns
 
+Optional modules:
+
 **2. Large-scale phenotyping module**
 - Performs large-scale TME phenotyping and identifies regions with a specific cellular composition and architecture within the TME of intravitally imaged tumors
 
 **3. Small-scale phenotyping module**
 - Further refines TME phenotyping to better understand tumor cell behavior
+
+The optional modules are already including the necessary sections for module 1 to allow for an easy run. 
 
 
 *Modules are collapsed to facilitate navigation. Please unscroll the modules you would like to check*
@@ -1087,19 +1084,6 @@ The BEHAV3D Tumor Profiler is divided in three distinct modules:
 <summary>**Click to expand the Heterogeneity module**</summary>
 
 
-We will firstly create an output directory for the module:\
-```{r}
-## Create the output directory 
-
-folder <- "D:/BEHAV3D_Tumor_Profiler/results/heterogeneity_module"
-
-if (file.exists(folder)) {
-  cat("The folder already exists")
-} else {
-  dir.create(folder)
-}
-```
-
 ### Dynamic Time Warping
 
 Dynamic Time Warping (DTW) is an algorithm used to measure similarity between two time series by aligning them in a way that minimizes the distance between corresponding points. It is particularly useful for comparing time series that may vary in speed or timing, like on this case.
@@ -1110,7 +1094,7 @@ If the `matrix_distmat.rds` file exists, it will skip the DTW analysis time, as 
 ###MULTIVARIATE
 list_master_pca <- split(master_pca3[,-c(1)],master_pca3$Track2) ## split into list
 
-if ( ! file.exists("D:/BEHAV3D_Tumor_Profiler/results/matrix_distmat.rds")){
+if ( ! file.exists("matrix_distmat.rds")){
   ##parallel working
   # load parallel
   library(parallel)
@@ -1844,24 +1828,10 @@ g_track_int2
 
 --- 
 
-## 2. Large-scale phenotyping Module
+## 1 + 2. Large-scale phenotyping Module
 
 <details>
 <summary>**Click to expand the Large-scale phenotyping module**</summary>
-
-
-We firstly create an output directory for the module:
-\
-```{r}
-# Create a directory for the results
-folder <- "/content/results/large_scale_phenotyping_module"
-
-if (file.exists(folder)) {
-  cat("The '/content/results/large_scale_phenotyping_module' folder already exists")
-} else {
-  dir.create(folder)
-}
-```
 
 ### Dynamic Time Warping
 
@@ -1873,7 +1843,7 @@ If the `matrix_distmat.rds` file exists, it will skip the DTW analysis time, as 
 ###MULTIVARIATE
 list_master_pca <- split(master_pca3[,-c(1)],master_pca3$Track2) ## split into list
 
-if ( ! file.exists("D:/BEHAV3D_Tumor_Profiler/results/matrix_distmat.rds")){
+if ( ! file.exists("matrix_distmat.rds")){
   ##parallel working
   # load parallel
   library(parallel)
@@ -2095,6 +2065,8 @@ Per3 <- Per3 + facet_grid(class~.)
 Per3<-Per3+theme_void()+theme(strip.text.x = element_text(size = 8, angle = 90))+ scale_fill_manual(values=mypalette_1)
 Per3
 ```
+
+
 ### Large-scale regions' statistics
 
 This section provides boxplot information about features in different large-scale regions
@@ -2428,24 +2400,11 @@ p_class_BV_mean
 
 --- 
 
-## 3. Small-scale phenotyping Module
+## 1 + 3. Small-scale phenotyping Module
 
 <details>
 <summary>**Click to expand the Small-scale phenotyping module**</summary>
 
-
-We firstly create an output directory for the module:
-\
-```{r}
-# Create a directory for the results
-folder <- "/content/results/small_scale_phenotyping_module"
-
-if (file.exists(folder)) {
-  cat("The '/content/results/small_scale_phenotyping_module' folder already exists")
-} else {
-  dir.create(folder)
-}
-```
 
 ### Dynamic Time Warping
 
@@ -2458,7 +2417,7 @@ If the `matrix_distmat.rds` file exists, it will skip the DTW analysis time, as 
 ###MULTIVARIATE
 list_master_pca <- split(master_pca3[,-c(1)],master_pca3$Track2) ## split into list
 
-if ( ! file.exists("D:/BEHAV3D_Tumor_Profiler/results/matrix_distmat.rds")){
+if ( ! file.exists("matrix_distmat.rds")){
   ##parallel working
   # load parallel
   library(parallel)
@@ -3172,6 +3131,16 @@ p_class_BV_mean
 
 ---
 
+\
+<details>
+<summary>Session Information</summary>
+
+```{r, echo=FALSE}
+sessionInfo()
+```
+
+</details>
+\
 
 Thank you for reading the BEHAV3D Tumor Profiler - Guided Tutorial.
 
