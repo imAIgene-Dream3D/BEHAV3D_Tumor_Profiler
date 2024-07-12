@@ -740,18 +740,9 @@ master_scaled<-master_norm[c(column_names2)]%>%mutate(across(everything(), scale
 master_pca<-prcomp(master_norm[c(column_names2)], scale = T)
 
 master_pca2<-master_pca[["x"]] ##select only PC
-##Semi-supervised learning, we introduce as well the distance to tumor variable that defines the direction of the cells, since it is the most important for us
-## Make an option of running completely unsupervised (only include the pca) and semi-supervised learning here
 master_pca3<-data.frame(master_norm[,c(2)],master_pca2[,c(1:3)]) ### take only first 3 components since they explain most variation
 
-Analysis <- "Semi-supervised" # @param ["Semi-supervised", "Unsupervised"]
-
-if (Analysis == "Semi-supervised"){
-  colnames(master_pca3)[1]<- "Track2"
-  print("Semi-supervised Analysis")
-} else{
-  print("Unsupervised Analysis")
-}
+colnames(master_pca3)[1]<- "Track2"
 
 pcaCharts <- function(x) {
   x.var <- x$sdev ^ 2
