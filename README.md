@@ -214,14 +214,7 @@ output csv and txt:
 - large_scale_per_cl.csv (Tukey HSD corrected differences between behavioral clusters in large scale features)
 - tukey (TukeyHSD analysis)
     - Tukey_disp2_cytomap_cl.txt
-    - Tukey_dist_10_neigh_cytomap_cl.txt
-    - Tukey_mean_BV_cytomap_cl.txt
-    - Tukey_min_BV_cytomap_cl.txt
-    - Tukey_min_MG_cytomap_cl.txt
-    - Tukey_min_SR101_cytomap_cl.txt
     - Tukey_move_dir_cytomap_cl.txt
-    - Tukey_n_MG_cytomap_cl.txt
-    - Tukey_n_SR101_cytomap_cl.txt
     - Tukey_speed_cytomap_cl.txt
 
 
@@ -233,7 +226,7 @@ output pdf:
 - environmental_cluster_stats.pdf
 - per_cluster_features_comparison.pdf
 
-output csv and txt:
+output csv and txt
 - master_class_sum.csv
 - correlation_nMG_to_location_at_tumor_border.txt
 - aov (ANOVA analysis)
