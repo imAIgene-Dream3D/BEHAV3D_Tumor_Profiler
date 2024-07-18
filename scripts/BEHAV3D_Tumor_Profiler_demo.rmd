@@ -2227,46 +2227,6 @@ p_class_movement
 ```
 
 
-- Distance to 10 neighbors
-```{r}
-p_class_dist_10neigh
-```
-
-
-- Minimal distance to an MG
-```{r}
-p_class_minMG
-```
-
-
-- Minimal distance to an SR101
-```{r}
-p_classmin_SR101
-```
-
-
-- Number of MG
-```{r}
-p_class_n_MG
-```
-
-
-- Number of SR101
-```{r}
-p_classn_SR101
-```
-
-- Minimal distance to BV
-```{r}
-p_class_BV_min
-```
-
-
-- Mean distance to BV
-```{r}
-p_class_BV_mean
-```
-
 <!-- </details> -->
 ---
 
