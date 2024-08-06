@@ -440,7 +440,7 @@ if ( ! file.exists("master_cor.rds")){
     List1 = list() ## create list for ID of the contacting objects
     for(t in unique(master_pos$Time)){
       master_pos_t <-master_pos%>%filter(Time==t)
-      ### calculate distance to 5 neigrest neighorbing SR101 in a radius of 40um
+      ### calculate distance to 5 neigrest neighorbing SR101 in a radius of 30um
       cells_radius<-nn2(data=master_SR101_pos[c("x","y","z")], query = master_pos_t[c("x","y","z")],k=30, treetype = 'bd',searchtype =  "radius", radius = 30)
       cells_min<-nn2(data=master_SR101_pos[c("x","y","z")], query = master_pos_t[c("x","y","z")],k=1, treetype = 'bd',searchtype =  "standard")
       
