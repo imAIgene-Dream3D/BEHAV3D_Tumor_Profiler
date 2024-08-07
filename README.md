@@ -130,7 +130,7 @@ In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHA
 
 ## Demo
 
-The [Demo]() is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
+The [Demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
 
 
 ## Making changes to your notebook
