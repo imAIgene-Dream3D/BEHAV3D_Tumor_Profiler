@@ -1,9 +1,9 @@
 # BEHAV3D Tumor Profiler pipeline
-Welcome to the BEHAV3D Tumor Profiler pipeline. Here you can analyze 3D confocal microscopy images and dissect the behavioral patterns of tumor cells.
+Welcome to the BEHAV3D Tumor Profiler pipeline. Here you can analyze 3D Intravital microscopy (IVM) images and dissect the behavioral patterns of tumor cells.
 ![BEHAV3D_Tumor Profiler](https://github.com/user-attachments/assets/80fa5511-ee6a-41f6-9be9-10ebd67e5850)
 
 ## Overview
-BEHAV3D_Tumor_Profiler is dynamic immuno-organoid 3D imaging platform derived from BEHAV3D to study tumor cells interactions with the Tumor Micro Environment (TME). It runs in a user friendly Google Colab notebook. However, the original R scripts are also available.
+BEHAV3D Tumor Profiler is an IVM 3D imaging platform derived from BEHAV3D to study tumor cell behavior and their interactions with the Tumor Micro Environment (TME). It runs in a user friendly Google Colab notebook. However, the original R scripts are also available.
 
 ## Modules
 The BEHAV3D Tumor Profiler is divided in three distinct modules:
