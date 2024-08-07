@@ -9,15 +9,15 @@ BEHAV3D Tumor Profiler is an IVM 3D imaging platform derived from BEHAV3D to stu
 The BEHAV3D Tumor Profiler is divided in three distinct modules:
 
 **1) Heterogeneity Module**
--  Implements multiparametric single-cell time-series classification, allowing us to identify distinct single-cell behavioral patterns
+-  Implements multiparametric single-cell time-series classification, allowing us to identify distinct single-cell behavioral patterns in tumor cells
 
 Optional Modules:
  
 **2) Large-scale phenotyping module**
-- Performs large-scale TME phenotyping and identifies regions with a specific cellular composition and architecture within the TME of intravitally imaged tumors
+- Unifies large-scale TME phenotyping with tumor cell behavioral profiling of intravitally imaged tumors. 
 
 **3) Small-scale phenotyping module**
-- Further refines TME phenotyping to better understand tumor cell behavior
+- Further refines TME phenotyping in a small-scale to better understand tumor cell behavior and the influence of TME in tumor cells
 
 Module 1 is mandatory for modules 2 and 3 to be able to work, therefore the execution of the optional modules 2 and 3 is combined with module 1, to simplify user experience.
 
