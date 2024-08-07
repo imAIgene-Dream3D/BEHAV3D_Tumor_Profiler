@@ -34,13 +34,15 @@ The pipeline is implemented in a user friendly Google Colab Notebook that you ca
 
 ## What type of data does BEHAV3D Tumor Profiler work with?
 - Any type of multispectral time-lapse IVM 3D (or 2D) imaging data, where objects such as tumor cells interact with the TME and therefore with immune cells of interest (MG, SR101) and Blood Vessel information (BV). Data for this pipeline has been extracted from [Imaris software](https://imaris.oxinst.com/), but other imaging software platforms can also be used and will be tested in the future.\
- **Data can be located in local or in Google Drive**
+
+
+**Data can be located in local or in Google Drive**
 
 ## What output can BEHAV3D Tumor Profiler provide?
-- Single-cell behavioral classification
-- Large-scale TME phenotyping 
-- Behavioral classification in TME environmental regions
-- Small-scale TME phenotyping
+- Single-cell behavioral classification of tumor cells
+- Relation between tumor cells behavioral classification with large-scale TME environmental regions
+- Relation between tumor cells behavioral classification with small-scale TME environmental regions
+
 
 ## How to cite this pipeline
 Dekkers JF*, Alieva M*, Cleven A, Keramati F, Wezenaar AKL, van Vliet EJ, Puschhof J, Brazda P, Johanna I, Meringa AD, Rebel HG, Buchholz MB, Barrera Román M, Zeeman AL, de Blank S, Fasci D, Geurts MH, Cornel AM, Driehuis E, Millen R, Straetemans T, Nicolasen MJT, Aarts-Riemens T, Ariese HCR, Johnson HR, van Ineveld RL, Karaiskaki F, Kopper O, Bar-Ephraim YE, Kretzschmar K, Eggermont AMM, Nierkens S, Wehrens EJ, Stunnenberg HG, Clevers H, Kuball J, Sebestyen Z, Rios AC. **Uncovering the mode of action of engineered T cells in patient cancer organoids**. * *equal contibution* Nat Biotechnol. 2023 Jan https://doi.org/10.1038/s41587-022-01397-w
@@ -119,7 +121,7 @@ These are the features to be uploaded:
 - `Time`
 
 ## Repository
-This repository contains a redirection to the [Google Colab user friendly platform](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), as well as the original R script, in case you want to further modify the pipeline to your needs. Additionally, a [wiki demo]() is provided as a follow-through tutorial of the pipeline and outputs.
+This repository contains a redirection to the [Google Colab user friendly platform](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), as well as the original R script, in case you want to further modify the pipeline to your needs. Additionally, a [wiki demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided as a follow-through tutorial of the pipeline and outputs.
 
 ## Set-up
 This pipeline is ready to use. In [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing) you only need to upload your files or link your google drive to the notebook, specify the working directories for each cell type and play with the available parameters that can modify your analysis. 
