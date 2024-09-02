@@ -45,7 +45,8 @@ The pipeline is implemented in a user friendly Google Colab Notebook that you ca
 
 
 ## How to cite this pipeline
-Dekkers JF*, Alieva M*, Cleven A, Keramati F, Wezenaar AKL, van Vliet EJ, Puschhof J, Brazda P, Johanna I, Meringa AD, Rebel HG, Buchholz MB, Barrera Román M, Zeeman AL, de Blank S, Fasci D, Geurts MH, Cornel AM, Driehuis E, Millen R, Straetemans T, Nicolasen MJT, Aarts-Riemens T, Ariese HCR, Johnson HR, van Ineveld RL, Karaiskaki F, Kopper O, Bar-Ephraim YE, Kretzschmar K, Eggermont AMM, Nierkens S, Wehrens EJ, Stunnenberg HG, Clevers H, Kuball J, Sebestyen Z, Rios AC. **Uncovering the mode of action of engineered T cells in patient cancer organoids**. * *equal contibution* Nat Biotechnol. 2023 Jan https://doi.org/10.1038/s41587-022-01397-w
+
+Emilio Rios-Jimenez*, Anoek Zomer*, Raphael Collot, Mario Barrera Román, Hendrikus Ariese, Ravian L. van Ineveld, Michiel Kleinnijenhuis, Nils Bessler, Hannah Johnson, Anne Rios #, Maria Alieva #. **BEHAV3D Tumor Profiler to map heterogeneous cancer cell behavior in the tumor microenvironment**. * *equal contibution*. # *shared last autorship*. bioRxiv. 2024; doi: https://doi.org/10.1101/2024.08.23.609358
 
 ## Software and Hardware requirements
 BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), so no specific hardware is required to run the pipeline. If you desire to run the R scripts, you can run them R studio or from command line. The pipeline was tested Windows 10 with R version 4.3.3.
