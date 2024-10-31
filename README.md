@@ -27,7 +27,11 @@ Module 1 is mandatory for modules 2 and 3 to be able to work, therefore the exec
 
 The pipeline is implemented in a user friendly Google Colab Notebook that you can find here:
 
+*Imaris import pipeline*
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
+
+*Trackmate import pipeline*
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_Wwcn6dqb0Ibhehn_E-38-XfuJQ9JuXZ?authuser=3#scrollTo=77wvnGCEmaAR)
 
 ## Video Tutorial
 [![Watch the video](https://img.youtube.com/vi/7RTJFzR-lSk/maxresdefault.jpg)](https://youtu.be/7RTJFzR-lSk)
@@ -43,6 +47,11 @@ The pipeline is implemented in a user friendly Google Colab Notebook that you ca
 - Relation between tumor cells behavioral classification with large-scale TME environmental regions
 - Relation between tumor cells behavioral classification with small-scale TME environmental regions
 
+## Feature selection
+This pipeline includes feature selection, so the user can freely select which features they want included in the analysis.
+
+![image](https://github.com/user-attachments/assets/ef59fc0a-e488-478d-98c0-a205d76886ee)
+
 
 ## How to cite this pipeline
 
@@ -51,7 +60,8 @@ Emilio Rios-Jimenez*, Anoek Zomer*, Raphael Collot, Mario Barrera Román, Hendri
 ## Software and Hardware requirements
 BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), so no specific hardware is required to run the pipeline. If you desire to run the R scripts, you can run them R studio or from command line. The pipeline was tested Windows 10 with R version 4.3.3.
 
-The main hardware requirements are for Imaris image processing before using the pipeline, which could require decent hardware. The BEHAV3D_Tumor Profiler analysis pipeline can be run on any decent computer
+The main hardware requirements are for Imaris image processing before using the pipeline, which could require decent hardware. The BEHAV3D_Tumor Profiler analysis pipeline can be run on any decent computer.
+In BEHAV3D Tumor Profiler v2.0 you can now use Trackmate analysis as input for the [colab pipeline](https://colab.research.google.com/drive/1_Wwcn6dqb0Ibhehn_E-38-XfuJQ9JuXZ?authuser=3#scrollTo=77wvnGCEmaAR)
 
 For image analysis, the Imaris analysis software v. 9.6 was emlployed and we made use of a workstation with the following specs:
 | | |
@@ -97,9 +107,9 @@ Java installation is required for the functioning of some packages: https://www.
 
  ## Data input
 
-Input data can be obtained from image analysis software like Imaris, where you extract the relevant features for each cell types. Each cell type must be inputted separately into the pipeline.
+Input data can be obtained from image analysis software like Imaris or Trackmate, where you extract the relevant features for each cell types. Each cell type must be inputted separately into the pipeline.
 
- Input data must follow the following format:
+ Input data must follow the following format for Imaris files:
 `Mouse_CellType_timelapse_LargeScaleRegion_Feature.csv`
 
 |Expected Cell types ||
@@ -121,6 +131,8 @@ These are the features to be uploaded:
 - `Speed`
 - `Time`
 
+Howover, any additional features to be analyzed can also be included and selected following users preference
+
 ## Repository
 This repository contains a redirection to the [Google Colab user friendly platform](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), as well as the original R script, in case you want to further modify the pipeline to your needs. Additionally, a [wiki demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided as a follow-through tutorial of the pipeline and outputs.
 
@@ -132,6 +144,8 @@ In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHA
 ## Demo
 
 The [Demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
+
+The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/BEHAV3D_TP-v2.0/demo_datasets) can be used to test the pipeline. There are available datasets for both Imaris and Trackmate files.
 
 
 ## Making changes to your notebook
