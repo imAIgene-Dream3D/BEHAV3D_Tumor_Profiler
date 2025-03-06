@@ -30,8 +30,8 @@ The pipeline is implemented in a user friendly Google Colab Notebook that you ca
 *Imaris import pipeline*
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
 
-*Trackmate import pipeline*
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_Wwcn6dqb0Ibhehn_E-38-XfuJQ9JuXZ?authuser=3#scrollTo=77wvnGCEmaAR)
+*Fiji import pipeline*
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_Wwcn6dqb0Ibhehn_E-38-XfuJQ9JuXZ?authuser=3)
 
 ## Video Tutorial
 [![Watch the video](https://img.youtube.com/vi/7RTJFzR-lSk/maxresdefault.jpg)](https://youtu.be/7RTJFzR-lSk)
