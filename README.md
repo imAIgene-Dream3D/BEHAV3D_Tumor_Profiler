@@ -31,7 +31,7 @@ The pipeline is implemented in a user friendly Google Colab Notebook that you ca
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing)
 
 *Fiji import pipeline*
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_Wwcn6dqb0Ibhehn_E-38-XfuJQ9JuXZ?)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1h1tiRKPSTLg-3q4J9ucMiG0PVLR7fsec?usp=sharing)
 
 ## Video Tutorial
 [![Watch the video](https://img.youtube.com/vi/7RTJFzR-lSk/maxresdefault.jpg)](https://youtu.be/7RTJFzR-lSk)
