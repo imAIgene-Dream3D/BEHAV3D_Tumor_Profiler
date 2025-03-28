@@ -52,6 +52,20 @@ This pipeline includes feature selection, so the user can freely select which fe
 
 ![image](https://github.com/user-attachments/assets/ef59fc0a-e488-478d-98c0-a205d76886ee)
 
+## Demo
+
+The [Demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
+
+The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/BEHAV3D_TP-v2.0/demo_datasets) can be used to test the pipeline. There are available datasets for both Imaris, Trackmate and MtrackJ files, both in 2D and 3D. 
+
+Each of this demo datasets has a specific Demo notebook with all the parameters tuned for analysis. You only have to load the corresponding dataset in each notebook and run it! 
+
+| Dataset | Data Link | Colab Notebook |
+|---------|----------|---------------|
+| Breast cancer IVM 2D MtrackJ | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Breast%20cancer%20IVM%202D%20MtrackJ) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zL3sLmhySPipfRygEuD9hOtzd1iV9sNh?usp=sharing) |
+| DMG IVM 3D Imaris | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/DMG%20IVM%203D%20Imaris) | In preparation... |
+| Epithelial breast IVM 2D TrackMate TEB CFP | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Epithelial%20breast%20IVM%202D%20TrackMate%20TEB%20CFP) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ddvQP8FxLc0fd4_XT0--DtbUqsor-q8W?usp=sharing) |
+| GBM IVM 3D TrackMate | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/GBM%20IVM%203D%20TrackMate) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/187xUpKkse86tMmDEvvqhGCFUBKJA9l5y?usp=sharing) |
 
 ## How to cite this pipeline
 
@@ -141,13 +155,6 @@ This pipeline is ready to use. In [Google Colab](https://colab.research.google.c
 
 In Rstudio, using the script available [here](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/BEHAV3D_Tumor_Profiler.R), you need to manually modify these parameters and specify the input and output directories. You may also need to install all the required libraries specified above.
 
-## Demo
-
-The [Demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
-
-The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/BEHAV3D_TP-v2.0/demo_datasets) can be used to test the pipeline. There are available datasets for both Imaris and Trackmate files.
-
-
 ## Making changes to your notebook
 - You can **make a copy** of the notebook and save it to your Google Drive account (File -> Save a copy in Drive).
 - To adit a cell, double click on the text. This will show either the source code (in code cells) or the source text (in text cells).
@@ -161,16 +168,16 @@ The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/t
 Each module provides its own output files. However, some output files are common to various modules. \
 Note that in the [Google Colab](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing) format, the outputs are saved in the Colab virtual environment, but you can download them at the end of the notebook as a `.zip` file.
 
-For additional information of each of the output files, please refer to the [demo Wiki]().
+For additional information of each of the output files, please refer to the [demo Wiki](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki).
 
 ### Common to all modules
 
 output rds:
-- BV_df_sum.rds
+- BV_df_sum.rds (if BV cells)
 - master_cor.rds
 - master_distance.rds
-- master_distance_MG.rds
-- master_distance_SR101.rds
+- master_distance_MG.rds (if MG cells)
+- master_distance_SR101.rds (if SR101 cells)
 - matrix_distmat.rds (dtw multivariate analysis results)
 - master_class_sum.rds
 
@@ -180,48 +187,24 @@ output csv:
 ### Heterogeneity Module
 
 output pdf:
-- Pie_chart.df
-- UMAP_cluster_and_other_features.pdf
-- UMAP_direction.pdf
+- Distribution_plot.df
+- UMAP_cluster.pdf
+- UMAP_features.pdf
 - backprojection_pos.pdf
-- cluster_heatmap_dynamic_features_2.pdf
+- cluster_dynamic_features.pdf
 - per_cluster_features_comparison.pdf
 
 output csv and txt:
 - master_class_sum.csv
 - [position_interest].txt (See code for further explanation)
-- aov (ANOVA analysis)
-    - aov_direction.txt
-    - aov_dist_3_neigh.txt
-    - aov_dist_10_neigh.txt
-    - aov_dist_contact_BV.txt
-    - aov_dist_mean_BV.txt
-    - aov_dist_min_BV.txt
-    - aov_dist_min_MG.txt
-    - aov:dist_min_SR101.txt
-    - aov_dist_n_MG.txt
-    - aov_dist_n_SR101.txt
-    - aov_dist_sd_BV.txt
-    - aov_speed.txt
+- aov (ANOVA analysis) --> For the selected features
+- tukey (TukeyHSD analysis) --> For the selected features
 
-- tukey (TukeyHSD analysis)
-    - Tukey_direction.txt
-    - Tukey_dist_3_neigh.txt
-    - Tukey_dist_10_neigh.txt
-    - Tukey_dist_contact_BV.txt
-    - Tukey_dist_mean_BV.txt
-    - Tukey_dist_min_BV.txt
-    - Tukey_dist_min_MG.txt
-    - Tukey_dist_min_SR101.txt
-    - Tukey_dist_n_MG.txt
-    - Tukey_dist_n_SR101.txt
-    - Tukey_dist_sd_BV.txt
-    - Tukey_speed.txt
 
 ### Large-scale phenotyping module
 
 output pdf:
-- Pie_chart.df
+- Distribution_plot.df
 - UMAP_large_Scale_positions.pdf
 - environmental_cluster_stats.pdf
 - large_scale_per_cl.pdf
@@ -229,53 +212,24 @@ output pdf:
 output csv and txt:
 - master_class_sum.csv
 - large_scale_per_cl.csv (Tukey HSD corrected differences between behavioral clusters in large scale features)
-- tukey (TukeyHSD analysis)
-    - Tukey_disp2_cytomap_cl.txt
-    - Tukey_move_dir_cytomap_cl.txt
-    - Tukey_speed_cytomap_cl.txt
+- tukey (TukeyHSD analysis) --> For the selected features
 
 
 ### Small-scale phenotyping module
 
 output pdf:
-- UMAP_cluster_and_other_features.pdf
-- cluster_heatmap_dynamic_features_2.pdf
+- UMAP_cluster.pdf
+- UMAP_features.pdf
+- cluster_dynamic_features.pdf
 - environmental_cluster_stats.pdf
 - per_cluster_features_comparison.pdf
 
 output csv and txt
 - master_class_sum.csv
 - correlation_nMG_to_location_at_tumor_border.txt
-- aov (ANOVA analysis)
-    - aov_dist_3_neigh.txt
-    - aov_dist_10_neigh.txt
-    - aov_dist_contact_BV.txt
-    - aov_dist_mean_BV.txt
-    - aov_dist_min_BV.txt
-    - aov_dist_min_MG.txt
-    - aov:dist_min_SR101.txt
-    - aov_dist_n_MG.txt
-    - aov_dist_n_SR101.txt
-    - aov_dist_sd_BV.txt
+- aov (ANOVA analysis) --> For the selected features
+- tukey (TukeyHSD analysis) --> For the selected features
 
-- tukey (TukeyHSD analysis)
-    - Tukey_dist_3_neigh.txt
-    - Tukey_dist_10_neigh.txt
-    - Tukey_dist_contact_BV.txt
-    - Tukey_dist_mean_BV.txt
-    - Tukey_dist_min_BV.txt
-    - Tukey_dist_min_MG.txt
-    - Tukey_dist_min_SR101.txt
-    - Tukey_dist_n_MG.txt
-    - Tukey_dist_n_SR101.txt
-    - Tukey_dist_sd_BV.txt
-    - Tukey_dist_10_neigh_cytomap_cl.txt
-    - Tukey_mean_BV_cytomap_cl.txt
-    - Tukey_min_BV_cytomap_cl.txt
-    - Tukey_min_MG_cytomap_cl.txt
-    - Tukey_min_SR101_cytomap_cl.txt
-    - Tukey_n_MG_cytomap_cl.txt
-    - Tukey_n_SR101_cytomap_cl.txt
 
 ## ***To run from Rstudio***
 
