@@ -56,16 +56,16 @@ This pipeline includes feature selection, so the user can freely select which fe
 
 The [Demo](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki) is provided in a Wiki-type format, where the user can navigate through the document and see how the `pipeline works with a demo dataset and what outputs to expect.
 
-The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/BEHAV3D_TP-v2.0/demo_datasets) can be used to test the pipeline. There are available datasets for both Imaris, Trackmate and MtrackJ files, both in 2D and 3D. 
+The [demo datasets](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets) can be used to test the pipeline. There are available datasets for Imaris, Trackmate and MtrackJ files, both in 2D and 3D. 
 
-Each of this demo datasets has a specific Demo notebook with all the parameters tuned for analysis. You only have to load the corresponding dataset in each notebook and run it! 
+Each of this demo datasets has a specific Demo notebook with all the parameters tuned for analysis. You only have to load the corresponding dataset in each notebook and run it! The results obtained for every dataset using the demo colab notebooks are also available in the [demo_dataset/Results](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Results/) directory and in the table below:
 
-| Dataset | Data Link | Colab Notebook |
-|---------|----------|---------------|
-| Breast cancer IVM 2D MtrackJ | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Breast%20cancer%20IVM%202D%20MtrackJ) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zL3sLmhySPipfRygEuD9hOtzd1iV9sNh?usp=sharing) |
-| DMG IVM 3D Imaris | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/DMG%20IVM%203D%20Imaris) | In preparation... |
-| Epithelial breast IVM 2D TrackMate TEB CFP | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Epithelial%20breast%20IVM%202D%20TrackMate%20TEB%20CFP) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ddvQP8FxLc0fd4_XT0--DtbUqsor-q8W?usp=sharing) |
-| GBM IVM 3D TrackMate | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/GBM%20IVM%203D%20TrackMate) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/187xUpKkse86tMmDEvvqhGCFUBKJA9l5y?usp=sharing) |
+| Dataset | Data Link | Colab Notebook | Results |
+|---------|----------|---------------|--------|
+| Breast cancer IVM 2D MtrackJ | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Breast%20cancer%20IVM%202D%20MtrackJ) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zL3sLmhySPipfRygEuD9hOtzd1iV9sNh?usp=sharing) | [Results](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Results/Breast%20cancer%20IVM%202D%20MtrackJ%20results.zip) |
+| DMG IVM 3D Imaris | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/DMG%20IVM%203D%20Imaris) | In preparation... | In preparation... |
+| Epithelial breast IVM 2D TrackMate TEB CFP | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Epithelial%20breast%20IVM%202D%20TrackMate%20TEB%20CFP) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ddvQP8FxLc0fd4_XT0--DtbUqsor-q8W?usp=sharing) | [Results](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Results/Epithelial%20breast%20IVM%202D%20TrackMate%20TEB%20CFPh%20results.zip) |
+| GBM IVM 3D TrackMate | [Data](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/GBM%20IVM%203D%20TrackMate) | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/187xUpKkse86tMmDEvvqhGCFUBKJA9l5y?usp=sharing) | [Results](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/tree/main/demo_datasets/Results/GBM%20IVM%203D%20TrackMate%20results.zip) |
 
 ## How to cite this pipeline
 
@@ -123,27 +123,31 @@ Java installation is required for the functioning of some packages: https://www.
 
 Input data can be obtained from image analysis software like Imaris or Trackmate, where you extract the relevant features for each cell types. Each cell type must be inputted separately into the pipeline.
 
- Input data must follow the following format for Imaris files:
-`Mouse_CellType_timelapse_LargeScaleRegion_Feature.csv`
+Input data must follow the following format:
+`MouseID_PosX_Condition1_Condition2_ExtraInfo.csv`
 
-|Expected Cell types ||
+|Expected Cell types | *Optional* |
 | ------------- | ------------- 
 | Tumor Cells | 3 Labelled TME (e.g. SR101, MG (Microglia) and BV (Blood Vessel))  
 
-**Example**: `2430F13_SR101_timelapse_CL3_2_Distance.csv`
+**Example**: `4237M03_pos3_CL1_1`
 
-Mouse information includes: `2430` -> Mother | `F` -> Sex | `13` -> Day
+Mouse#: `4237M03`
 
-LargeScaleRegion information includes: `CL2` -> Class (Environmental Cluster) | `2430F13.CL2_2` or just `CL2_2` -> Position
+Position: `pos3`
 
-These are the features to be uploaded:
-- `Displacement`
-- `Distance_tumor`
-- `Displacement_Delta_Length`
-- `Displacement_Length`
+Class: `CL1`
+
+Condition2: `1`
+
+
+These are the features to be uploaded (at least):
 - `Position`
-- `Speed`
 - `Time`
+- `Displacement^2`
+- `Displacement_Length`
+- `Displacement_Delta_Length`
+- `Speed`
 
 Howover, any additional features to be analyzed can also be included and selected following users preference
 
