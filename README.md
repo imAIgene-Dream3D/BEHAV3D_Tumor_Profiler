@@ -174,21 +174,21 @@ Note that in the [Google Colab](https://colab.research.google.com/drive/1JI7ysqF
 
 For additional information of each of the output files, please refer to the [demo Wiki](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/wiki).
 
-### Common to all modules
+### Results folder
 
 output rds:
-- BV_df_sum.rds (if BV cells)
+- master_class.rds
 - master_cor.rds
 - master_distance.rds
-- master_distance_MG.rds (if MG cells)
-- master_distance_SR101.rds (if SR101 cells)
-- matrix_distmat.rds (dtw multivariate analysis results)
-- master_class_sum.rds
+- master_traject.rds (from heterogeneity_module)
+- matrix_distmat.rds (dtw multivariate analysis results from heterogeneity_module)
+- master_class_sum.rds (from heterogeneity_module)
 
-output csv:
-- master_class_sum.csv
 
 ### Heterogeneity Module
+
+output rds:
+- master_class_sum.rds
 
 output pdf:
 - Distribution_plot.df
@@ -199,10 +199,8 @@ output pdf:
 - per_cluster_features_comparison.pdf
 
 output csv and txt:
-- master_class_sum.csv
+- master_class_sum.csv (for statistical analysis)
 - [position_interest].txt (See code for further explanation)
-- aov (ANOVA analysis) --> For the selected features
-- tukey (TukeyHSD analysis) --> For the selected features
 
 
 ### Large-scale phenotyping module
@@ -214,12 +212,16 @@ output pdf:
 - large_scale_per_cl.pdf
 
 output csv and txt:
-- master_class_sum.csv
-- large_scale_per_cl.csv (Tukey HSD corrected differences between behavioral clusters in large scale features)
-- tukey (TukeyHSD analysis) --> For the selected features
-
+- master_class_sum.csv (for statistical analysis)
+- large_scale_per_cl.csv
 
 ### Small-scale phenotyping module
+
+output rds:
+- matrix_distmat.rds
+- master_class_sum.rds
+- master_traject.rds
+- master_class_small_scale.rds
 
 output pdf:
 - UMAP_cluster.pdf
@@ -227,17 +229,17 @@ output pdf:
 - cluster_dynamic_features.pdf
 - environmental_cluster_stats.pdf
 - per_cluster_features_comparison.pdf
+- backprojection_pos.pdf
 
 output csv and txt
-- master_class_sum.csv
-- correlation_nMG_to_location_at_tumor_border.txt
-- aov (ANOVA analysis) --> For the selected features
-- tukey (TukeyHSD analysis) --> For the selected features
+- master_class_sum.csv (for statistical analysis)
+- [position_interest].txt (See code for further explanation)
+
 
 
 ## ***To run from Rstudio***
 
- Download the [script](https://github.com/AlievaRios/BEHAV3D_Tumor_Profiler/blob/main/scripts/BEHAV3D_Tumor_Profiler.R) and open it in Rstudio. There, you can run the full code line by line and further experiment with your dataset. Take into account that if you download the file, the specifications of your computer can affect the duration of the analysis.
+ Download the [script](https://github.com/imAIgene-Dream3D/BEHAV3D_Tumor_Profiler/blob/main/scripts/BEHAV3D_Tumor_Profiler.R) and open it in Rstudio. There, you can run the full code line by line and further experiment with your dataset. Take into account that if you download the file, the specifications of your computer can affect the duration of the analysis.
  
  
  ## Additional Information
