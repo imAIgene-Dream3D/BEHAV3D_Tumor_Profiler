@@ -1110,67 +1110,35 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 
-#### try an anova between clusters based speed 
 p_speed <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=speed, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("speed per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
 p_speed
 
-a_speed <- aov(speed ~ cluster2, data=master_class_sum2) 
-summary(a_speed)
-TukeyHSD(a_speed)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_speed), file=paste0(res_path,"Tukey_speed.txt"))
-capture.output(summary(a_speed), file=paste0(res_path,"aov_speed.txt"))
 
-#### try an anova between clusters based direction
 p_direction <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=movement, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("speed per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(-15,20))
 
 p_direction
 
-a_direction <- aov(movement ~ cluster2, data=master_class_sum2) 
-summary(a_direction)
-TukeyHSD(a_direction)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_direction), file=paste0(res_path,"Tukey_direction.txt"))
-capture.output(summary(a_direction), file=paste0(res_path,"aov_direction.txt"))
 
-
-
-#### try an anova between clusters based on distance to dist_3_neigh
 p_dist3_neigth <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_3_neigh, group=cluster2, fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(alpha=0.5, outlier.colour = NA)+ggtitle("dist 3 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(10,70))
 
 p_dist3_neigth
 
-a_dist_3_neigh <- aov(dist_3_neigh ~ cluster2, data=master_class_sum2) 
-summary(a_dist_3_neigh)
-TukeyHSD(a_dist_3_neigh)
 
-capture.output(TukeyHSD(a_dist_3_neigh), file=paste0(res_path,"Tukey_dist_3_neigh.txt"))
-capture.output(summary(a_dist_3_neigh), file=paste0(res_path,"aov_dist_3_neigh.txt"))
-
-#### try an anova between clusters based on distance to dist_10_neigh
 p_dist_10_neigh <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_10_neigh, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(20,90))
 
 p_dist_10_neigh
 
-a_dist_10_neigh <- aov(dist_10_neigh ~ cluster2, data=master_class_sum2) 
-summary(a_dist_10_neigh)
-TukeyHSD(a_dist_10_neigh)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_dist_10_neigh), file=paste0(res_path,"Tukey_dist_10_neigh.txt"))
-capture.output(summary(a_dist_10_neigh), file=paste0(res_path,"aov_dist_10_neigh.txt"))
 
 
-#### try an anova between clusters based on dist to MG
 p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cluster2) , y=min_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(2,45))
@@ -1178,17 +1146,7 @@ p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cl
 p_min_MG
 
 
-a_min_MG <- aov(min_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_min_MG)
-TukeyHSD(a_min_MG)
 
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_min_MG),  file=paste0(res_path,"Tukey_dist_min_MG.txt"))
-capture.output(summary(a_min_MG),  file=paste0(res_path,"aov_dist_min_MG.txt"))
-
-
-#### try an anova between clusters based on dist to SR101
 p_min_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(cluster2) , y=min_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,50))
@@ -1196,19 +1154,7 @@ p_min_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.fac
 p_min_SR101
 
 
-a_min_SR101 <- aov(min_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(min_SR101))) 
-summary(a_min_SR101)
-TukeyHSD(a_min_SR101)
 
-
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_min_SR101), file=paste0(res_path,"Tukey_dist_min_SR101.txt"))
-capture.output(summary(a_min_SR101), file=paste0(res_path,"aov_dist_min_SR101.txt"))
-
-
-
-#### try an anova between clusters based on n of  MG
 p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluster2) , y=n_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("n MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,15))
@@ -1216,17 +1162,7 @@ p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluste
 p_n_MG
 
 
-a_n_MG <- aov(n_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_n_MG)
-TukeyHSD(a_n_MG)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_n_MG), file=paste0(res_path,"Tukey_dist_n_MG.txt") )
-capture.output(summary(a_n_MG), file=paste0(res_path,"aov_dist_n_MG.txt") )
 
-
-
-
-#### try an anova between clusters based on n of  SR101
 p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(cluster2) , y=n_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("n SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
@@ -1234,17 +1170,6 @@ p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(c
 p_nSR101
 
 
-
-a_nSR101 <- aov(n_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(n_SR101))) 
-summary(a_nSR101)
-TukeyHSD(a_nSR101)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_nSR101), file=paste0(res_path,"Tukey_dist_n_SR101.txt") )
-capture.output(summary(a_nSR101), file=paste0(res_path,"aov_dist_n_SR101.txt") )
-
-
-
-#### try an anova between clusters based on mean distance to BV
 
 p_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(cluster2) , y=BV_mean, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_mean")+theme_classic()+
@@ -1254,17 +1179,6 @@ p_BV_mean
 
 
 
-a_BV_mean <- aov(BV_mean ~ cluster2, data= subset(master_class_sum2, !is.na(BV_mean))) 
-summary(a_BV_mean)
-TukeyHSD(a_BV_mean)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_mean),file=paste0(res_path,"Tukey_dist_mean_BV.txt"))
-capture.output(summary(a_BV_mean),file=paste0(res_path,"aov_dist_mean_BV.txt"))
-
-
-#### try an anova between clusters based on min distance to BV
-
 p_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_min, group=cluster2, fill=cluster2))  +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("BV_min")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
@@ -1272,19 +1186,6 @@ p_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cl
 p_BV_min
 
 
-
-a_BV_min <- aov(BV_min ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-summary(a_BV_min)
-TukeyHSD(a_BV_min)
-
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_min), file=paste0(res_path,"Tukey_dist_min_BV.txt"))
-capture.output(summary(a_BV_min), file=paste0(res_path,"aov_dist_min_BV.txt"))
-
-
-
-#### try an anova between clusters based on contact to BV
 
 p_BV_contact <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_contact, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_contact")+theme_classic()+ scale_fill_manual(values=mypalette_1)+
@@ -1294,34 +1195,11 @@ p_BV_contact
 
 
 
-a_BV_contact <- aov(BV_contact ~ cluster2, data= subset(master_class_sum2, !is.na(BV_contact))) 
-summary(a_BV_contact)
-TukeyHSD(a_BV_contact)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_contact), file=paste0(res_path,"Tukey_dist_contact_BV.txt"))
-capture.output(summary(a_BV_contact), file=paste0(res_path,"aov_dist_contact_BV.txt"))
-
-
-
-#### try an anova between clusters based on sd distance to BV
-
 p_BV_sd <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_sd, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("Standart deviation distance")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,1.7))
 
 p_BV_sd
-
-
-
-a_BV_sd <- aov(BV_sd ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-TukeyHSD(a_BV_sd)
-
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_sd), file=paste0(res_path,"Tukey_dist_sd_BV.txt"))
-capture.output(summary(a_BV_sd), file=paste0(res_path,"aov_dist_sd_BV.txt"))
-
 
 
 pdf(paste0(res_path,"per_cluster_features_comparison.pdf" )) ##adjust path
@@ -1688,7 +1566,6 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 
-#### try an anova between clusters based on distance to speed
 p_class_speed <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=speed, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("speed per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,20))
@@ -1696,17 +1573,7 @@ p_class_speed <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=speed, grou
 p_class_speed
 
 
-a_class_speed <- aov(speed ~ class, data=master_class_sum2) 
-summary(a_class_speed)
-TukeyHSD(a_class_speed)
 
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_speed), file=paste0(res_path,"/Tukey_speed_cytomap_cl.txt"))
-
-
-
-
-#### try an anova between clusters based on distance to squared displacement
 p_class_disp2 <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=disp2, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("speed per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,180))
@@ -1714,32 +1581,11 @@ p_class_disp2 <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=disp2, grou
 p_class_disp2
 
 
-a_class_disp2 <- aov(disp2 ~ class, data=master_class_sum2) 
-summary(a_class_disp2)
-TukeyHSD(a_class_disp2)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_disp2), file=paste0(res_path,"/Tukey_disp2_cytomap_cl.txt"))
-
-
-
-#### try an anova between clusters based on raw tumor movement
 p_class_movement <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=movement, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red")) +ggtitle("movement direction per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+scale_color_gradientn(colours = rev(RColorBrewer::brewer.pal(4, "Spectral")))+coord_cartesian(ylim = c(-10,17))
 
 p_class_movement
-
-
-a_class_movement <- aov(movement ~ class, data=master_class_sum2) 
-summary(a_class_movement)
-TukeyHSD(a_class_movement)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_movement), file=paste0(res_path,"/Tukey_move_dir_cytomap_cl.txt"))
-
-
-
 
 
 pdf(paste0(res_path, "environmental_cluster_stats.pdf"))
@@ -2012,37 +1858,20 @@ master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$clust
 
 # Differences per behavioral cluster in small-scale TME features
 
-#### try an anova between clusters based on distance to dist_3_neigh
 p_dist3_neigth <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_3_neigh, group=cluster2, fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(alpha=0.5, outlier.colour = NA)+ggtitle("dist 3 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(10,70))
 
 p_dist3_neigth
 
-a_dist_3_neigh <- aov(dist_3_neigh ~ cluster2, data=master_class_sum2) 
-summary(a_dist_3_neigh)
-TukeyHSD(a_dist_3_neigh)
 
-capture.output(TukeyHSD(a_dist_3_neigh), file=paste0(res_path,"Tukey_dist_3_neigh.txt"))
-capture.output(summary(a_dist_3_neigh), file=paste0(res_path,"aov_dist_3_neigh.txt"))
-
-#### try an anova between clusters based on distance to dist_10_neigh
 p_dist_10_neigh <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_10_neigh, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(20,90))
 
 p_dist_10_neigh
 
-a_dist_10_neigh <- aov(dist_10_neigh ~ cluster2, data=master_class_sum2) 
-summary(a_dist_10_neigh)
-TukeyHSD(a_dist_10_neigh)
 
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_dist_10_neigh), file=paste0(res_path,"Tukey_dist_10_neigh.txt"))
-capture.output(summary(a_dist_10_neigh), file=paste0(res_path,"aov_dist_10_neigh.txt"))
-
-
-#### try an anova between clusters based on dist to MG
 p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cluster2) , y=min_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(2,45))
@@ -2050,17 +1879,7 @@ p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cl
 p_min_MG
 
 
-a_min_MG <- aov(min_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_min_MG)
-TukeyHSD(a_min_MG)
 
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_min_MG),  file=paste0(res_path,"Tukey_dist_min_MG.txt"))
-capture.output(summary(a_min_MG),  file=paste0(res_path,"aov_dist_min_MG.txt"))
-
-
-#### try an anova between clusters based on dist to SR101
 p_min_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(cluster2) , y=min_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,50))
@@ -2073,14 +1892,6 @@ summary(a_min_SR101)
 TukeyHSD(a_min_SR101)
 
 
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_min_SR101), file=paste0(res_path,"Tukey_dist_min_SR101.txt"))
-capture.output(summary(a_min_SR101), file=paste0(res_path,"aov_dist_min_SR101.txt"))
-
-
-
-#### try an anova between clusters based on n of  MG
 p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluster2) , y=n_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("n MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,15))
@@ -2088,17 +1899,7 @@ p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluste
 p_n_MG
 
 
-a_n_MG <- aov(n_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_n_MG)
-TukeyHSD(a_n_MG)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_n_MG), file=paste0(res_path,"Tukey_dist_n_MG.txt") )
-capture.output(summary(a_n_MG), file=paste0(res_path,"aov_dist_n_MG.txt") )
 
-
-
-
-#### try an anova between clusters based on n of  SR101
 p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(cluster2) , y=n_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("n SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
@@ -2106,17 +1907,6 @@ p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(c
 p_nSR101
 
 
-
-a_nSR101 <- aov(n_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(n_SR101))) 
-summary(a_nSR101)
-TukeyHSD(a_nSR101)
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_nSR101), file=paste0(res_path,"Tukey_dist_n_SR101.txt") )
-capture.output(summary(a_nSR101), file=paste0(res_path,"aov_dist_n_SR101.txt") )
-
-
-
-#### try an anova between clusters based on mean distance to BV
 
 p_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(cluster2) , y=BV_mean, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_mean")+theme_classic()+
@@ -2126,16 +1916,6 @@ p_BV_mean
 
 
 
-a_BV_mean <- aov(BV_mean ~ cluster2, data= subset(master_class_sum2, !is.na(BV_mean))) 
-summary(a_BV_mean)
-TukeyHSD(a_BV_mean)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_mean),file=paste0(res_path,"Tukey_dist_mean_BV.txt"))
-capture.output(summary(a_BV_mean),file=paste0(res_path,"aov_dist_mean_BV.txt"))
-
-
-#### try an anova between clusters based on min distance to BV
 
 p_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_min, group=cluster2, fill=cluster2))  +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("BV_min")+theme_classic()+
@@ -2145,19 +1925,6 @@ p_BV_min
 
 
 
-a_BV_min <- aov(BV_min ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-summary(a_BV_min)
-TukeyHSD(a_BV_min)
-
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_min), file=paste0(res_path,"Tukey_dist_min_BV.txt"))
-capture.output(summary(a_BV_min), file=paste0(res_path,"aov_dist_min_BV.txt"))
-
-
-
-#### try an anova between clusters based on contact to BV
-
 p_BV_contact <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_contact, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_contact")+theme_classic()+ scale_fill_manual(values=mypalette_1)+
   theme(aspect.ratio=0.7)
@@ -2166,33 +1933,11 @@ p_BV_contact
 
 
 
-a_BV_contact <- aov(BV_contact ~ cluster2, data= subset(master_class_sum2, !is.na(BV_contact))) 
-summary(a_BV_contact)
-TukeyHSD(a_BV_contact)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_contact), file=paste0(res_path,"Tukey_dist_contact_BV.txt"))
-capture.output(summary(a_BV_contact), file=paste0(res_path,"aov_dist_contact_BV.txt"))
-
-
-
-#### try an anova between clusters based on sd distance to BV
-
 p_BV_sd <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_sd, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("Standart deviation distance")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,1.7))
 
 p_BV_sd
-
-
-
-a_BV_sd <- aov(BV_sd ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-TukeyHSD(a_BV_sd)
-
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_BV_sd), file=paste0(res_path,"Tukey_dist_sd_BV.txt"))
-capture.output(summary(a_BV_sd), file=paste0(res_path,"aov_dist_sd_BV.txt"))
 
 
 
@@ -2214,21 +1959,14 @@ dev.off()
 
 ####Differences based on environmental clusters with small-scale TME features
 
-#### try an anova between clusters based on distance to dist_10_neigh
 p_class_dist_10neigh <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=dist_10_neigh, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(20,70))
 
 p_class_dist_10neigh
-a_class_dist_10neigh <- aov(dist_10_neigh ~ class, data=master_class_sum2) 
-summary(a_class_dist_10neigh)
-TukeyHSD(a_class_dist_10neigh)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_dist_10neigh), file=paste0(res_path,"/Tukeydist10neigth_cytomap_cl.txt"))
 
 
-#### try an anova between clusters based on dist to MG
+
 p_class_minMG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(class) , y=min_MG, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,50))
@@ -2236,16 +1974,7 @@ p_class_minMG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.fact
 p_class_minMG
 
 
-a_class_minMG <- aov(min_MG ~ class, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_class_minMG)
-TukeyHSD(a_class_minMG)
 
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_minMG), file=paste0(res_path,"/Tukey_minMG_cytomap_cl.txt"))
-
-
-
-#### try an anova between clusters based on dist to SR101
 p_classmin_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(class) , y=min_SR101, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA) +stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,50))
@@ -2253,47 +1982,22 @@ p_classmin_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=a
 p_classmin_SR101 
 
 
-a_classmin_SR101  <- aov(min_SR101 ~ class, data= subset(master_class_sum2, !is.na(min_SR101))) 
-summary(a_classmin_SR101 )
-TukeyHSD(a_classmin_SR101 )
 
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_classmin_SR101 ), file=paste0(res_path,"/Tukey_minSR101_cytomap_cl.txt"))
-
-
-
-#### try an anova between clusters based on n of  MG
 p_class_n_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)),aes(x=as.factor(class) , y=n_MG, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA) +stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("n of MG per cluster")+theme_classic()+
   theme(aspect.ratio=1)
 
 p_class_n_MG
 
-a_class_n_MG <- aov(n_MG ~ class, data= subset(master_class_sum2, !is.na(min_MG))) 
-summary(a_class_n_MG)
-TukeyHSD(a_class_n_MG)
 
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_n_MG), file=paste0(res_path,"/Tukey_nMG_cytomap_cl.txt"))
-
-
-
-#### try an anova between clusters based on n of  SR101
 
 p_classn_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)),aes(x=as.factor(class) , y=n_SR101, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("n SR101 per cluster")+theme_classic()+
   theme(aspect.ratio=1)
 p_classn_SR101
 
-a_classn_SR101 <- aov(n_SR101 ~ class, data= subset(master_class_sum2, !is.na(min_SR101))) 
-summary(a_classn_SR101)
-TukeyHSD(a_classn_SR101)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_classn_SR101), file=paste0(res_path,"/Tukey_nSR101_cytomap_cl.txt"))
 
 
-#### try an anova between clusters based on BV distance min
 p_class_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(class) , y=BV_min, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+ scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("min distance to BV")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,18))
@@ -2301,28 +2005,13 @@ p_class_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.fac
 p_class_BV_min
 
 
-a_class_BV_min <- aov(BV_min ~ class, data= subset(master_class_sum2, !is.na(BV_min))) 
-summary(a_class_BV_min)
-TukeyHSD(a_class_BV_min)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_BV_min), file=paste0(res_path,"/Tukey_minBV_cytomap_cl.txt"))
 
 
-#### try an anova between clusters based on BV distance mean
 p_class_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(class) , y=BV_mean, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+ scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("mean distance to BV")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,18))
 
 p_class_BV_mean
-
-
-a_class_BV_mean <- aov(BV_mean ~ class, data= subset(master_class_sum2, !is.na(BV_mean))) 
-summary(a_class_BV_mean)
-TukeyHSD(a_class_BV_mean)
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(TukeyHSD(a_class_BV_mean), file=paste0(res_path,"/Tukey_meanBV_cytomap_cl.txt"))
 
 
 ##relation between position relative to the tumor and amount of MG:
@@ -2332,12 +2021,6 @@ pcor_MG_position <- ggplot(subset(master_class_sum2, !is.na(min_MG)),aes(x=dista
   theme(aspect.ratio=1)
 
 pcor_MG_position
-
-cor_18<-cor.test(master_class_sum2$n_MG,master_class_sum2$distance_to_tumor,  method = "pearson", use = "pairwise.complete.obs")
-cor_18
-
-### save as txt the output of this comparison. Change the path for your own data
-capture.output(cor_18, file=paste0(res_path,"/correlation_nMG_to_location_at_tumor_border.txt"))
 
 
 pdf(paste0(res_path, "environmental_cluster_stats.pdf"))

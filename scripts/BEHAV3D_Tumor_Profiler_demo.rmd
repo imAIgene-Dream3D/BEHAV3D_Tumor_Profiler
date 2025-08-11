@@ -1471,7 +1471,7 @@ Per4
 
 ### Differences based on  clusters
 
-This section analyzes the differences between clusters for different features and provides statistical support in each case.
+This section analyzes the differences between clusters for different features.
 
 
 <details>
@@ -1487,196 +1487,72 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 
-#### try an anova between clusters based speed 
 p_speed <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=speed, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("speed per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_speed <- aov(speed ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based direction
 p_direction <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=movement, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("speed per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(-15,20))
 
-a_direction <- aov(movement ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on distance to dist_3_neigh
 p_dist3_neigth <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_3_neigh, group=cluster2, fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(alpha=0.5, outlier.colour = NA)+ggtitle("dist 3 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(10,70))
 
-a_dist_3_neigh <- aov(dist_3_neigh ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on distance to dist_10_neigh
 p_dist_10_neigh <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_10_neigh, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(20,90))
 
-a_dist_10_neigh <- aov(dist_10_neigh ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on dist to MG
 p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cluster2) , y=min_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(2,45))
 
-a_min_MG <- aov(min_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
 
-
-#### try an anova between clusters based on dist to SR101
 p_min_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(cluster2) , y=min_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,50))
 
-a_min_SR101 <- aov(min_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(min_SR101))) 
 
-
-#### try an anova between clusters based on n of  MG
 p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluster2) , y=n_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("n MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,15))
 
-a_n_MG <- aov(n_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
 
 
-#### try an anova between clusters based on n of  SR101
 p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(cluster2) , y=n_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("n SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_nSR101 <- aov(n_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(n_SR101))) 
 
-
-#### try an anova between clusters based on mean distance to BV
 
 p_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(cluster2) , y=BV_mean, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_mean")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_BV_mean <- aov(BV_mean ~ cluster2, data= subset(master_class_sum2, !is.na(BV_mean))) 
 
-#### try an anova between clusters based on min distance to BV
 
 p_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_min, group=cluster2, fill=cluster2))  +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("BV_min")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_BV_min <- aov(BV_min ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
 
-
-#### try an anova between clusters based on contact to BV
 
 p_BV_contact <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_contact, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_contact")+theme_classic()+ scale_fill_manual(values=mypalette_1)+
   theme(aspect.ratio=0.7)
 
-a_BV_contact <- aov(BV_contact ~ cluster2, data= subset(master_class_sum2, !is.na(BV_contact))) 
-
-
-#### try an anova between clusters based on sd distance to BV
 
 p_BV_sd <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_sd, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("Standart deviation distance")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,1.7))
 
-a_BV_sd <- aov(BV_sd ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-
 ```
 </details>
 
-\
-<details>
-
-<summary>See Statistical Information</summary>
-\
-Statistical information based on ANOVA and Tukey's HSD (Honestly Significant Difference) test:
-
-- Speed
-```{r}
-summary(a_speed)
-TukeyHSD(a_speed)
-```
-
-
-- Direction
-```{r}
-summary(a_direction)
-TukeyHSD(a_direction)
-```
-
-
-- Distance to 3 neighbors
-```{r}
-summary(a_dist_3_neigh)
-TukeyHSD(a_dist_3_neigh)
-```
-
-
-- Distance to 10 neighbors
-```{r}
-summary(a_dist_10_neigh)
-TukeyHSD(a_dist_10_neigh)
-```
-
-
-- Minimal distance to an MG
-```{r}
-summary(a_min_MG)
-TukeyHSD(a_min_MG)
-```
-
-
-- Minimal distance to an SR101
-```{r}
-summary(a_min_SR101)
-TukeyHSD(a_min_SR101)
-```
-
-
-- Number of MG
-```{r}
-summary(a_n_MG)
-TukeyHSD(a_n_MG)
-```
-
-
-- Number of SR101
-```{r}
-summary(a_nSR101)
-TukeyHSD(a_nSR101)
-```
-
-
-- Mean distance to BV 
-```{r}
-summary(a_BV_mean)
-TukeyHSD(a_BV_mean)
-```
-
-
-- Minimal distance to BV
-```{r}
-summary(a_BV_min)
-TukeyHSD(a_BV_min)
-```
-
-
-- BV contact
-```{r}
-summary(a_BV_contact)
-TukeyHSD(a_BV_contact)
-```
-
-- BV standard deviation (sd)
-```{r}
-summary(a_BV_sd)
-TukeyHSD(a_BV_sd)
-```
-</details>
 \
 The output in this section shows a boxplot for each feature in each behavioral cluster
 
@@ -2136,7 +2012,7 @@ plots_list
 
 ### Differences based on large-scale regions
 
-This section analyzes the differences between large-scale regions for different features and provides statistical support in each case.
+This section analyzes the differences between large-scale regions for different features.
 
 
 <details>
@@ -2158,53 +2034,19 @@ p_class_speed <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=speed, grou
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("speed per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,20))
 
-a_class_speed <- aov(speed ~ class, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on squared displacement
 p_class_disp2 <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=disp2, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("speed per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,180))
 
-a_class_disp2 <- aov(disp2 ~ class, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on raw tumor movement
 p_class_movement <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=movement, group=class,fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red")) +ggtitle("movement direction per env cluster")+theme_classic()+
   theme(aspect.ratio=1)+scale_color_gradientn(colours = rev(RColorBrewer::brewer.pal(4, "Spectral")))+coord_cartesian(ylim = c(-10,17))
 
-a_class_movement <- aov(movement ~ class, data=master_class_sum2) 
 ```
 </details>
 
-<details>
-<summary>See Statistical Information</summary>
-
-Statistical information between large-scale regions (environmental clusters) based on ANOVA and Tukey’s HSD (Honestly Significant Difference) test:
-
-- Speed
-```{r}
-summary(a_class_speed)
-TukeyHSD(a_class_speed)
-
-```
-
-
-- Squared displacement
-```{r}
-summary(a_class_disp2)
-TukeyHSD(a_class_disp2)
-```
-
-
-- Movement
-```{r}
-summary(a_class_movement)
-TukeyHSD(a_class_movement)
-```
-
-</details>
 
 The output in this section shows a boxplot for each feature in each behavioral cluster according to large-scale regions:
 
@@ -2520,7 +2362,7 @@ ggplot(master_class_sum, mapping=aes(x=V1, y=V2, color=dist_3_neigh)) +
 
 ### Differences based on  clusters
 
-This section analyzes the differences between clusters for small-scale features and provides statistical support in each case.
+This section analyzes the differences between clusters for small-scale features.
 
 
 <details>
@@ -2536,167 +2378,60 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 
-#### try an anova between clusters based on distance to dist_3_neigh
 p_dist3_neigth <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_3_neigh, group=cluster2, fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot(alpha=0.5, outlier.colour = NA)+ggtitle("dist 3 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(10,70))
 
-a_dist_3_neigh <- aov(dist_3_neigh ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on distance to dist_10_neigh
 p_dist_10_neigh <- ggplot(master_class_sum2,aes(x=as.factor(cluster2) , y=dist_10_neigh, group=cluster2,fill=cluster2)) +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(20,90))
 
-a_dist_10_neigh <- aov(dist_10_neigh ~ cluster2, data=master_class_sum2) 
 
-
-#### try an anova between clusters based on dist to MG
 p_min_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(cluster2) , y=min_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(2,45))
 
-a_min_MG <- aov(min_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
 
-
-#### try an anova between clusters based on dist to SR101
 p_min_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(cluster2) , y=min_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,50))
 
-a_min_SR101 <- aov(min_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(min_SR101))) 
 
-
-#### try an anova between clusters based on n of  MG
 p_n_MG <- ggplot(subset(master_class_sum2, !is.na(n_MG)) ,aes(x=as.factor(cluster2) , y=n_MG, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("n MG")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,15))
 
-a_n_MG <- aov(n_MG ~ cluster2, data= subset(master_class_sum2, !is.na(min_MG))) 
 
-
-#### try an anova between clusters based on n of  SR101
 p_nSR101 <- ggplot(subset(master_class_sum2, !is.na(n_SR101)) ,aes(x=as.factor(cluster2) , y=n_SR101, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("n SR101")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_nSR101 <- aov(n_SR101 ~ cluster2, data= subset(master_class_sum2, !is.na(n_SR101))) 
-
-
-#### try an anova between clusters based on mean distance to BV
 
 p_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(cluster2) , y=BV_mean, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_mean")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_BV_mean <- aov(BV_mean ~ cluster2, data= subset(master_class_sum2, !is.na(BV_mean))) 
-
-#### try an anova between clusters based on min distance to BV
 
 p_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_min, group=cluster2, fill=cluster2))  +geom_jitter(width=0.2, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("BV_min")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,20))
 
-a_BV_min <- aov(BV_min ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
-
-
-#### try an anova between clusters based on contact to BV
 
 p_BV_contact <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_contact, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot(outlier.colour = NA, alpha=0.5) +ggtitle("BV_contact")+theme_classic()+ scale_fill_manual(values=mypalette_1)+
   theme(aspect.ratio=0.7)
 
-a_BV_contact <- aov(BV_contact ~ cluster2, data= subset(master_class_sum2, !is.na(BV_contact))) 
 
-
-#### try an anova between clusters based on sd distance to BV
 
 p_BV_sd <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(cluster2) , y=BV_sd, group=cluster2, fill=cluster2))  +geom_jitter(width=0.3, alpha=0.5) +
   geom_boxplot( outlier.colour = NA, alpha=0.5) +ggtitle("Standart deviation distance")+theme_classic()+
   theme(aspect.ratio=0.7)+ scale_fill_manual(values=mypalette_1)+coord_cartesian(ylim = c(0,1.7))
 
-a_BV_sd <- aov(BV_sd ~ cluster2, data= subset(master_class_sum2, !is.na(BV_min))) 
 
 ```
 </details>
 
-\
-<details>
-
-<summary>See Statistical Information</summary>
-\
-Statistical information based on ANOVA and Tukey's HSD (Honestly Significant Difference) test:
-
-
-- Distance to 3 neighbors
-```{r}
-summary(a_dist_3_neigh)
-TukeyHSD(a_dist_3_neigh)
-```
-
-
-- Distance to 10 neighbors
-```{r}
-summary(a_dist_10_neigh)
-TukeyHSD(a_dist_10_neigh)
-```
-
-
-- Minimal distance to an MG
-```{r}
-summary(a_min_MG)
-TukeyHSD(a_min_MG)
-```
-
-
-- Minimal distance to an SR101
-```{r}
-summary(a_min_SR101)
-TukeyHSD(a_min_SR101)
-```
-
-
-- Number of MG
-```{r}
-summary(a_n_MG)
-TukeyHSD(a_n_MG)
-```
-
-
-- Number of SR101
-```{r}
-summary(a_nSR101)
-TukeyHSD(a_nSR101)
-```
-
-
-- Mean distance to BV 
-```{r}
-summary(a_BV_mean)
-TukeyHSD(a_BV_mean)
-```
-
-
-- Minimal distance to BV
-```{r}
-summary(a_BV_min)
-TukeyHSD(a_BV_min)
-```
-
-
-- BV contact
-```{r}
-summary(a_BV_contact)
-TukeyHSD(a_BV_contact)
-```
-
-- BV standard deviation (sd)
-```{r}
-summary(a_BV_sd)
-TukeyHSD(a_BV_sd)
-```
-</details>
 \
 The output in this section shows a boxplot for each small-scale feature in each behavioral cluster
 
@@ -2761,7 +2496,7 @@ p_BV_sd
 
 ### Differences based on large-scale regions
 
-This section analyzes the differences between large-scale regions for small-scale features and provides statistical support in each case.
+This section analyzes the differences between large-scale regions for small-scale features.
 
 
 <details>
@@ -2779,142 +2514,50 @@ master_class_sum2<-left_join(master_class_sum, df1[,c("cluster2","mean_movement"
 master_class_sum2$cluster2 = factor(master_class_sum2$cluster2, levels=df1$cluster2)
 
 
-#### try an anova between clusters based on distance to dist_10_neigh
 p_class_dist_10neigh <- ggplot(master_class_sum2,aes(x=as.factor(class) , y=dist_10_neigh, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("dist 10 neigh per cluster")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(20,70))
 
-a_class_dist_10neigh <- aov(dist_10_neigh ~ class, data=master_class_sum2) 
 
-
-
-#### try an anova between clusters based on dist to MG
 p_class_minMG <- ggplot(subset(master_class_sum2, !is.na(min_MG)) ,aes(x=as.factor(class) , y=min_MG, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("distance to closest MG")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,50))
 
-a_class_minMG <- aov(min_MG ~ class, data= subset(master_class_sum2, !is.na(min_MG))) 
 
-
-
-#### try an anova between clusters based on dist to SR101
 p_classmin_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)) ,aes(x=as.factor(class) , y=min_SR101, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA) +stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("distance to closest SR101")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,50))
 
-a_classmin_SR101  <- aov(min_SR101 ~ class, data= subset(master_class_sum2, !is.na(min_SR101))) 
 
-
-
-#### try an anova between clusters based on n of  MG
 p_class_n_MG <- ggplot(subset(master_class_sum2, !is.na(min_MG)),aes(x=as.factor(class) , y=n_MG, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA) +stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("n of MG per cluster")+theme_classic()+
   theme(aspect.ratio=1)
 
-a_class_n_MG <- aov(n_MG ~ class, data= subset(master_class_sum2, !is.na(min_MG))) 
 
-
-
-#### try an anova between clusters based on n of  SR101
 p_classn_SR101 <- ggplot(subset(master_class_sum2, !is.na(min_SR101)),aes(x=as.factor(class) , y=n_SR101, fill=class)) +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+scale_fill_manual(values=c("cyan","gold","red"))+ggtitle("n SR101 per cluster")+theme_classic()+
   theme(aspect.ratio=1)
 
-a_classn_SR101 <- aov(n_SR101 ~ class, data= subset(master_class_sum2, !is.na(min_SR101))) 
 
-
-
-#### try an anova between clusters based on BV distance min
 p_class_BV_min <- ggplot(subset(master_class_sum2, !is.na(BV_min)) ,aes(x=as.factor(class) , y=BV_min, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+ scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("min distance to BV")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,18))
 
-a_class_BV_min <- aov(BV_min ~ class, data= subset(master_class_sum2, !is.na(BV_min))) 
 
-
-
-#### try an anova between clusters based on BV distance mean
 p_class_BV_mean <- ggplot(subset(master_class_sum2, !is.na(BV_mean)) ,aes(x=as.factor(class) , y=BV_mean, fill=class))  +
   geom_violin(alpha=1, outlier.colour = NA)+stat_summary(fun = median, geom = "crossbar",  size = 1, color = "grey25")+ scale_fill_manual(values=c("cyan","gold","red"))  +ggtitle("mean distance to BV")+theme_classic()+
   theme(aspect.ratio=1)+coord_cartesian(ylim = c(0,18))
 
-a_class_BV_mean <- aov(BV_mean ~ class, data= subset(master_class_sum2, !is.na(BV_mean))) 
 
-
-##relation between position relative to the tumor and amount of MG:
 
 pcor_MG_position <- ggplot(subset(master_class_sum2, !is.na(min_MG)),aes(x=distance_to_tumor , y=n_MG)) +geom_jitter()+
   geom_point(alpha=0.5,stat = "summary") +geom_smooth(method = "lm")+ggtitle("scatter plot movement vs min_MG")+theme_classic()+
   theme(aspect.ratio=1)
-cor_18<-cor.test(master_class_sum2$n_MG,master_class_sum2$distance_to_tumor,  method = "pearson", use = "pairwise.complete.obs")
 
 
 ```
 </details>
 
-<details>
-
-<summary>See Statistical Information</summary>
-\
-Statistical information between large-scale regions (environmental clusters) based on ANOVA and Tukey’s HSD (Honestly Significant Difference) test:
-
-
-- Distance to 10 neighbors
-```{r}
-summary(a_class_dist_10neigh)
-TukeyHSD(a_class_dist_10neigh)
-```
-
-
-- Minimal distance to an MG
-```{r}
-summary(a_class_minMG)
-TukeyHSD(a_class_minMG)
-```
-
-
-- Minimal distance to an SR101
-```{r}
-summary(a_classmin_SR101 )
-TukeyHSD(a_classmin_SR101 )
-```
-
-
-- Number of MG
-```{r}
-summary(a_class_n_MG)
-TukeyHSD(a_class_n_MG)
-```
-
-
-- Number of SR101
-```{r}
-summary(a_classn_SR101)
-TukeyHSD(a_classn_SR101)
-```
-
-
-- Minimal distance to BV
-```{r}
-summary(a_class_BV_min)
-TukeyHSD(a_class_BV_min)
-```
-
-
-- Mean distance to BV
-```{r}
-summary(a_class_BV_mean)
-TukeyHSD(a_class_BV_mean)
-```
-
-\
-Statistical information based on correlation test between position relative to the tumor and amount of MG:
-\
-```{r}
-cor_18
-```
-
-</details>
 
 The output in this section shows a boxplot for each feature in each behavioral cluster according to large-scale regions:
 
