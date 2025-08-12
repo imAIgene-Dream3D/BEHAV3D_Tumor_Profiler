@@ -69,7 +69,7 @@ Each of this demo datasets has a specific Demo notebook with all the parameters 
 
 ## How to cite this pipeline
 
-Emilio Rios-Jimenez*, Anoek Zomer*, Raphael Collot, Mario Barrera Román, Hendrikus Ariese, Ravian L. van Ineveld, Michiel Kleinnijenhuis, Nils Bessler, Hannah Johnson, Anne Rios #, Maria Alieva #. **BEHAV3D Tumor Profiler to map heterogeneous cancer cell behavior in the tumor microenvironment**. * *equal contibution*. # *shared last autorship*. bioRxiv. 2024; doi: https://doi.org/10.1101/2024.08.23.609358
+Emilio Rios-Jimenez*, Anoek Zomer*, Raphael Collot, Mario Barrera Román, Sandra F. Archidona, Hendrikus CR Ariese, Ravian L. van Ineveld, Michiel Kleinnijenhuis, Nils Bessler, Hannah Johnson, Caleb A. Dawson, Anne Rios #, Maria Alieva #. **BEHAV3D Tumor Profiler to map heterogeneous cancer cell behavior in the tumor microenvironment**. * *equal contibution*. # *shared last autorship*. eLife. 2025; doi: https://doi.org/10.7554/eLife.102097.2
 
 ## Software and Hardware requirements
 BEHAV3D_Tumor Profiler runs in a [Google Colab notebook](https://colab.research.google.com/drive/1JI7ysqFf3tvdi6Df4YUsSZ8RbuXw8wba?usp=sharing), so no specific hardware is required to run the pipeline. If you desire to run the R scripts, you can run them R studio or from command line. The pipeline was tested Windows 10 with R version 4.3.3.
